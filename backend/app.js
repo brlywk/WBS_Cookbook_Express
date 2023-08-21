@@ -1,7 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 const app = express();
+app.use(cors());
 
 const dataPath = path.join(__dirname, "data");
 const foodFile = path.join(dataPath, "recipes.json");
@@ -31,5 +33,5 @@ app.route("/food/:id").get((req, res, next) => {
 });
 
 // start server
-const port = 6666;
+const port = 3000;
 app.listen(port, () => console.log(`Server running on localhost:${port}`));
