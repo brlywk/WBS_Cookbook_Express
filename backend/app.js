@@ -36,7 +36,6 @@ app.route("/food").get((req, res, next) => {
     });
 
     res.status(200).json(recipes);
-    db.close();
   });
 });
 
@@ -54,7 +53,6 @@ app.route("/food/:id").get((req, res, _next) => {
     }
 
     res.status(200).send(row);
-    db.close();
   });
 });
 
@@ -87,7 +85,6 @@ app.route("/search").get((req, res, _next) => {
     });
 
     res.status(200).json(results);
-    db.close();
   });
 });
 
