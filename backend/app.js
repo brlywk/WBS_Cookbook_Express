@@ -41,14 +41,20 @@ app.route("/food").get((req, res, next) => {
 });
 
 // endpoint: single recipe by id
-app.route("/food/:id").get((req, res, next) => {
+app.route("/food/:id").get((req, res, _next) => {
   const { id } = req.params;
 
   if (!id) {
     return res.status(400).send("Error with ID");
   }
 
-  res.status(200).send(recipe);
+  db.get("SELECT * FROM recipes WHERE id = $id", { $id: id }, (err, row) => {
+    if (err || !row) {
+      return res.status(500).send(`Error accessing database" ${err}`);
+    }
+
+    res.status(200).send(row);
+  });
 });
 
 // start server
