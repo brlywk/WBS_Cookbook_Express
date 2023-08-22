@@ -50,10 +50,44 @@ app.route("/food/:id").get((req, res, _next) => {
 
   db.get("SELECT * FROM recipes WHERE id = $id", { $id: id }, (err, row) => {
     if (err || !row) {
-      return res.status(500).send(`Error accessing database" ${err}`);
+      return res.status(500).send(`Error accessing database: ${err}`);
     }
 
     res.status(200).send(row);
+    db.close();
+  });
+});
+
+// endpoint: search for a recipe
+app.route("/search").get((req, res, _next) => {
+  const { query } = req.query;
+
+  if (!query) {
+    return res
+      .status(400)
+      .send("No query found in request. Please use ?query=[searchterm] to initiate a search request.");
+  }
+
+  const sqlQuery = `SELECT * FROM recipes WHERE title LIKE "%${query}%" OR description LIKE "%${query}%"`;
+
+  db.all(sqlQuery, (err, rows) => {
+    if (err) {
+      return res.status(500).send(`Error accessing database: ${err}`);
+    }
+
+    const results = [];
+
+    rows.forEach((r) => {
+      results.push({
+        id: r.id,
+        title: r.title,
+        description: r.description,
+        img: r.img,
+      });
+    });
+
+    res.status(200).json(results);
+    db.close();
   });
 });
 
