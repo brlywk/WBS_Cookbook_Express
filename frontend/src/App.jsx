@@ -1,4 +1,4 @@
-import "./App.scss";
+import "../src/index_tailwind.scss";
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import RecipeDetail from "./RecipeDetail";
@@ -42,31 +42,23 @@ function App() {
 
   return (
     <Router>
-      <Link to="/" className="home-link">
-        Foodie Recipes
-      </Link>
-      <h5>SINCE 2023</h5>
+      <Link to="/" className="home-link">Foodie Recipes</Link>
+      <h5 className="top-text">SINCE 2023</h5>
       <Routes>
         <Route
           path="/"
           element={
             <div className="App">
               <motion.div className="carousel-container">
-                <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: -width }}>
-                  {foods &&
-                    foods.length > 0 &&
-                    foods.map((food) => {
-                      return (
-                        <motion.div className="item" key={food.id}>
-                          <Link to={`/recipe/${food.id}`}>
-                            <div className="item-wrap">
-                              <h3 className="title">{food.title}</h3>
-                              <img src={food.img} alt={food.title} />
-                            </div>
-                          </Link>
-                        </motion.div>
-                      );
-                    })}
+                <motion.div className="inner-carousel flex cursor-grab" drag="x" dragConstraints={{ right: -width }}>
+                  {foods && foods.length > 0 && foods.map((food) => (
+                    <motion.div className="item min-h-[20rem] w-[30%] p-24 transition-all duration-300 ease-in-out" key={food.id}>
+                      <Link to={`/recipe/${food.id}`} className="item-wrap block relative">
+                        <h3 className="title">{food.title}</h3>
+                        <img src={food.img} alt={food.title} className="custom-shadow" />
+                      </Link>
+                    </motion.div>
+                  ))}
                 </motion.div>
               </motion.div>
             </div>
@@ -74,7 +66,7 @@ function App() {
         />
         <Route path="/recipe/:id" element={<RecipeDetail />} />
       </Routes>
-      <h6>Made by Jerry & Vijaya</h6>
+      <h6 className="bottom-text">Made by Jerry & Vijaya</h6>
     </Router>
   );
 }
