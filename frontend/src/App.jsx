@@ -3,10 +3,14 @@ import { motion } from "framer-motion";
 import RecipeDetail from "./RecipeDetail";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import useLocalhost from "./useLocalhost";
+import SearchBar from "./components/SearchBar";
+import HeroRecipe from "./components/HeroRecipe";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   const [foods, setFoods] = useState([]);
-  const { getFoods } = useLocalhost();
+  const [hero, setHero] = useState(null);
+  const { getFoods, randomFood } = useLocalhost();
   const [width, setWidth] = useState(0);
   const carousel = useRef();
   const constraintsRef = useRef(null);
@@ -14,10 +18,17 @@ function App() {
   useEffect(() => {
     getFoods()
       .then((res) => {
-        console.log(res);
         setFoods(res);
       })
       .catch((error) => console.log(error));
+
+    randomFood()
+      .then((result) => {
+        setHero(result);
+      })
+      .catch((error) => console.log(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only run once, after the initial render
 
   useEffect(() => {
@@ -71,8 +82,14 @@ function App() {
           }
         />
         <Route path="/recipe/:id" element={<RecipeDetail />} />
+        <Route path="/search" element={<SearchResults />} />
       </Routes>
       <h6 className="bottom-text">Made by Jerry & Vijaya</h6>
+
+      <div style={{ height: "10rem" }}></div>
+      <SearchBar />
+      <div style={{ height: "2rem" }}></div>
+      <HeroRecipe recipe={hero} />
     </Router>
   );
 }

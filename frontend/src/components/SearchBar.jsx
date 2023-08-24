@@ -20,14 +20,9 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full flex justify-end">
-      <input
-        type="text"
-        className="w-2/3 px-3 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        placeholder="Search for Recipe"
-        ref={inputRef}
-      />
-      <button className="bg-orange-500 text-white px-4 py-2 rounded-md ml-2" type="submit">
+    <form onSubmit={handleSubmit} className="">
+      <input type="text" className="" placeholder="Search for Recipe" ref={inputRef} />
+      <button className="" type="submit">
         Search
       </button>
     </form>
