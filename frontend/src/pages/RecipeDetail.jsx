@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useLocalhost from "./useLocalhost";
+import useLocalhost from "../useLocalhost";
 
 const RecipeDetail = () => {
   let { id } = useParams();
