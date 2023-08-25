@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import useLocalhost from "../useLocalhost";
+import useCookbook from "../hooks/useCookbook";
 import { Link } from "react-router-dom";
 
 const SearchResults = () => {
@@ -16,7 +16,7 @@ const SearchResults = () => {
 
   // HOOKS
   const [searchParams] = useSearchParams();
-  const { searchFood } = useLocalhost();
+  const { searchFood } = useCookbook();
 
   useEffect(() => {
     let query = searchParams.get("query").toLowerCase();

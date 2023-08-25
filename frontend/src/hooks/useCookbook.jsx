@@ -1,10 +1,11 @@
-const useLocalhost = () => {
-  const localhost = import.meta.env.VITE_LOCALSERVER;
+const useCookbook = () => {
+  const env = import.meta.env;
+  const apiEndpoint = `${env.VITE_API_URL}:${env.VITE_API_PORT}`;
 
   const getFoods = async () => {
     try {
       const route = "food";
-      const endpoint = new URL(route, localhost);
+      const endpoint = new URL(route, apiEndpoint);
 
       const results = await fetch(endpoint.href);
       if (!results.ok) {
@@ -22,7 +23,7 @@ const useLocalhost = () => {
   const getFoodById = async (id) => {
     try {
       const route = `food/${id}`;
-      const endpoint = new URL(route, localhost);
+      const endpoint = new URL(route, apiEndpoint);
 
       const results = await fetch(endpoint.href);
       if (!results.ok) {
@@ -40,7 +41,7 @@ const useLocalhost = () => {
   const searchFood = async (query) => {
     try {
       const route = "search";
-      const endpoint = new URL(route, localhost);
+      const endpoint = new URL(route, apiEndpoint);
       const params = new URLSearchParams({
         query,
       });
@@ -62,7 +63,7 @@ const useLocalhost = () => {
   const randomFood = async () => {
     try {
       const route = "random";
-      const endpoint = new URL(route, localhost);
+      const endpoint = new URL(route, apiEndpoint);
 
       const results = await fetch(endpoint.href);
       if (!results.ok) {
@@ -80,4 +81,4 @@ const useLocalhost = () => {
   return { getFoods, getFoodById, searchFood, randomFood };
 };
 
-export default useLocalhost;
+export default useCookbook;

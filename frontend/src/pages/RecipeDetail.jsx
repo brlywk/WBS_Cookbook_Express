@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useLocalhost from "../useLocalhost";
+import useCookbook from "../hooks/useCookbook";
 import ShareButtons from "../components/ShareButtons";
 
 const RecipeDetail = () => {
   let { id } = useParams();
-  const { getFoodById } = useLocalhost();
+  const { getFoodById } = useCookbook();
   const [food, setFood] = useState(null);
 
   useEffect(() => {
@@ -26,11 +26,11 @@ const RecipeDetail = () => {
       <h2 className="text-5xl font-bold text-center mb-4">{food.title}</h2>
       <div className="container flex space-x-12 p-12 justify-center items-center mt-12">
         <div className="imageside w-2/3">
-          <img 
-            src={food.img} 
-            alt={food.title} 
-            className="w-full h-auto border-double object-cover" 
-            style={{borderColor: 'rgba(240, 248, 255, 0.207)'}} 
+          <img
+            src={food.img}
+            alt={food.title}
+            className="w-full h-auto border-double object-cover"
+            style={{ borderColor: "rgba(240, 248, 255, 0.207)" }}
           />
         </div>
         <div className="n-format space-y-4 w-2/3">
