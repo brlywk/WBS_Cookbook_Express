@@ -26,6 +26,7 @@ const Homepage = ({ foods, hero }) => {
     const titleClass = "title text-xl font-bold text-white text-center absolute top-1/2 left-0 right-0 -translate-y-1/2 opacity-0 mt-[20px] transition-all duration-300 ease-in"; // Added class for title styling
 
   return (
+    
     <div>
 {hero && <HeroRecipe recipe={hero} />}  
 

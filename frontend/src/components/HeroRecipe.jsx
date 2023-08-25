@@ -8,7 +8,7 @@ const HeroRecipe = ({ recipe }) => {
   return (
     <>
       {recipe && (
-        <div className="flex space-x-12 p-12 justify-center items-center mt-12 bg-white bg-opacity-20 backdrop-blur-md rounded-xl shadow-2xl w-1/2 mx-auto">
+        <div className="flex space-x-12 p-12 justify-center items-center mt-12 rounded-xl w-1/2 mx-auto border-gray-200 bg-white p-5 bg-opacity-20 backdrop-blur-sm transition delay-150 duration-300 ease-in-out hover:scale-[105%] hover:shadow-2xl">
           {/* Hero Image */}
           <Link to={`/recipe/${recipe.id}`}>
             <img 
