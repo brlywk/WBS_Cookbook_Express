@@ -3,17 +3,12 @@ const useCookbook = () => {
   const apiPath = import.meta.env.VITE_API_PATH;
   const apiPort = import.meta.env.VITE_API_PORT;
 
-  console.log("Host", apiHost, "- Path", apiPath, "- Port", apiPort);
-
-  const apiEndpoint = `${apiHost}:${apiPort}`;
-  console.log("API Endpoint", apiEndpoint);
+  const apiEndpoint = `${apiHost}${apiPort ? ":" : ""}${apiPort}`;
 
   const getFoods = async () => {
     try {
       const route = `/${apiPath}/food`;
       const endpoint = new URL(route, apiEndpoint);
-
-      console.log("Endpoint", endpoint);
 
       const results = await fetch(endpoint.href);
       if (!results.ok) {
