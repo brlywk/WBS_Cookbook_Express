@@ -1,6 +1,8 @@
 const useCookbook = () => {
-  const env = import.meta.env;
-  const apiEndpoint = `${env.VITE_API_URL}:${env.VITE_API_PORT}`;
+  const apiUrl = import.meta.env.VITE_API_URL || process.env.API_URL;
+  const apiPort = import.meta.env.VITE_API_PORT || process.env.API_PORT;
+
+  const apiEndpoint = `${apiUrl}:${apiPort}`;
 
   const getFoods = async () => {
     try {
