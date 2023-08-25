@@ -12,8 +12,6 @@ const SearchResults = () => {
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  console.log("Foods", results);
-
   // HOOKS
   const [searchParams] = useSearchParams();
   const { searchFood } = useCookbook();
@@ -48,7 +46,7 @@ const SearchResults = () => {
       {/* Display Components */}
       {!isLoading && !hasError && results && (
         <>
-          <h1 className="text-xl">
+          <h1 className="text-xl py-4">
             {results.length > 0
               ? `We found ${results.length} recipe${results.length === 1 ? "" : "s"} you might be interested in:`
               : "Sorry, none of our recipes match your search."}
@@ -56,12 +54,12 @@ const SearchResults = () => {
           <div className="mt-8"></div>
           {/* Just copied from app.js, should maybe be its own component... */}
           {results.length > 0 && (
-            <div className="grid grid-cols-5 gap-4">
+            <div className="grid grid-cols-3 gap-2">
               {results.map((food) => (
-                <div className="item min-h-[20rem] w-[30%] p-24 transition-all duration-300 ease-in-out" key={food.id}>
+                <div className="item min-h-[20rem] w-full transition-all duration-300 ease-in-out" key={food.id}>
                   <Link to={`/recipe/${food.id}`} className="item-wrap block relative">
                     <h3 className="title">{food.title}</h3>
-                    <img src={food.img} alt={food.title} className="custom-shadow" />
+                    <img src={food.img} alt={food.title} className="custom-shadow w-full h-auto" />
                   </Link>
                 </div>
               ))}

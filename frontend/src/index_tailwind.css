@@ -9,3 +9,19 @@ html {
   }
 
 
+  .hero-container {
+    transition: all 0.15s ease-in-out;
+  }
+  
+  .hero-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #0000002f, 0 0 15px #63636326, 0 0 20px #98989839, 0 0 25px #7d7d7d40, 0 0 30px #76767634;
+  }
+
+  
+  @media screen and (max-width: 768px) {
+    .hero-container {
+      flex-direction: column;
+      width: 100%;
+    }
+  }

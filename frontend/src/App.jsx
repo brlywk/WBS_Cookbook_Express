@@ -55,7 +55,7 @@ function App() {
         <Route path="/recipe/:id" element={<RecipeDetail />} />
         <Route path="/search" element={<SearchResults />} />
       </Routes>
-      <h6 className="bottom-text">Made by Jerry & Chris</h6>
+      <h6 className="bottom-text py-10">Made by Jerry & Chris</h6>
     </Router>
   );
 }
