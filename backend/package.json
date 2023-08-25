@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js --ignore data/recipes.json"
+    "dev": "nodemon api/index.js"
   },
   "keywords": [],
   "author": "",
