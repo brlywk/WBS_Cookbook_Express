@@ -7,7 +7,7 @@ const setDb = (database) => {
   db = database;
 };
 
-searchRouter.route("/search").get((req, res, _next) => {
+searchRouter.route("/api/search").get((req, res, _next) => {
   if (!db) {
     res.status(500).send("Error, no database connection found.");
   }

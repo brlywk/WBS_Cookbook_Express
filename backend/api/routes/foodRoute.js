@@ -7,7 +7,7 @@ const setDb = (database) => {
   db = database;
 };
 
-foodRouter.route("/food").get((req, res, next) => {
+foodRouter.route("/api/food").get((req, res, next) => {
   if (!db) {
     res.status(500).send("Error, no database connection found.");
   }
@@ -33,7 +33,7 @@ foodRouter.route("/food").get((req, res, next) => {
   });
 });
 
-foodRouter.route("/food/:id").get((req, res, _next) => {
+foodRouter.route("/api/food/:id").get((req, res, _next) => {
   if (!db) {
     res.status(500).send("Error, no database connection found.");
   }
