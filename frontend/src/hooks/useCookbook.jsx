@@ -1,10 +1,13 @@
 const useCookbook = () => {
-  const env = import.meta.env;
-  const apiEndpoint = `${env.VITE_API_URL}:${env.VITE_API_PORT}`;
+  const apiHost = import.meta.env.VITE_API_HOST;
+  const apiPath = import.meta.env.VITE_API_PATH;
+  const apiPort = import.meta.env.VITE_API_PORT;
+
+  const apiEndpoint = `${apiHost}${apiPort ? ":" : ""}${apiPort}`;
 
   const getFoods = async () => {
     try {
-      const route = "food";
+      const route = `/${apiPath}/food`;
       const endpoint = new URL(route, apiEndpoint);
 
       const results = await fetch(endpoint.href);
@@ -22,7 +25,7 @@ const useCookbook = () => {
 
   const getFoodById = async (id) => {
     try {
-      const route = `food/${id}`;
+      const route = `/${apiPath}/food/${id}`;
       const endpoint = new URL(route, apiEndpoint);
 
       const results = await fetch(endpoint.href);
@@ -40,7 +43,7 @@ const useCookbook = () => {
 
   const searchFood = async (query) => {
     try {
-      const route = "search";
+      const route = `/${apiPath}/search`;
       const endpoint = new URL(route, apiEndpoint);
       const params = new URLSearchParams({
         query,
@@ -62,7 +65,7 @@ const useCookbook = () => {
 
   const randomFood = async () => {
     try {
-      const route = "random";
+      const route = `/${apiPath}/random`;
       const endpoint = new URL(route, apiEndpoint);
 
       const results = await fetch(endpoint.href);

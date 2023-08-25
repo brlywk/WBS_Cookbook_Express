@@ -7,7 +7,7 @@ const setDb = (database) => {
   db = database;
 };
 
-randomRouter.route("/random").get((req, res, _next) => {
+randomRouter.route("/api/random").get((req, res, _next) => {
   if (!db) {
     res.status(500).send("Error, no database connection found.");
   }

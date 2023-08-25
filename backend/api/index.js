@@ -6,7 +6,9 @@ const app = express();
 app.use(cors());
 
 const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database("./data/cookbook.sqlite", (err) => {
+const dbFolder = path.join(__dirname, "data");
+
+const db = new sqlite3.Database(`${dbFolder}/cookbook.sqlite`, (err) => {
   if (err) {
     console.log(`Error loading database: ${err}`);
   } else {
@@ -30,5 +32,5 @@ randomRoute.setDb(db);
 app.use(randomRoute.randomRouter);
 
 // start server
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
