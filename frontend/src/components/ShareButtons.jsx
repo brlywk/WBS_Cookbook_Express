@@ -14,20 +14,19 @@ const ShareButtons = ({ recipeName, recipeId }) => {
   const encodedLink = `mailto:?Subject=${encodedSubject}&body=${encodedBody}`;
 
   return (
-    <div className="">
-      {/* Share Link Button */}
+    <div className="space-x-4">
+    {/* Share Link Button */}
       <CopyToClipboard text={shareLink} onCopy={() => setCopied(true)}>
-        <button className="">
-          <ClipboardDocumentIcon className="" /> Copy link
+        <button className="cursor-pointer transition-all duration-300 ease-in-out bg-white opacity-75 text-current text-base border-none rounded-lg px-10 py-2 outline-none mt-4 hover:bg-grey-500 hover:scale-110 transform-gpu">
+          Copy link
         </button>
       </CopyToClipboard>
-
+  
       {/* Share via Email button */}
-      <button onClick={() => (window.location = encodedLink)} className="">
-        <AtSymbolIcon className="" />
+      <button onClick={() => (window.location = encodedLink)} className="cursor-pointer transition-all duration-300 ease-in-out bg-white opacity-75 text-current text-base border-none rounded-lg px-10 py-2 outline-none mt-4 hover:bg-white-500 hover:scale-110 transform-gpu">
         Share via Email
       </button>
-      {copied && <span className="">Link copied to clipboard!</span>}
+      {copied && <span className="block text-blue-500 mt-2">Link copied to clipboard!</span>}
     </div>
   );
 };

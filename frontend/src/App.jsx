@@ -29,10 +29,24 @@ function App() {
 
   return (
     <Router>
-      <Link to="/" className="home-link text-xl font-bold text-blue-500">
-        Foodie Recipes
-      </Link>
-      <h5 className="text-gray-500 text-sm">SINCE 2023</h5>
+<Link 
+  to="/" 
+  className="home-link" 
+  style={{
+    fontFamily: "'Cormorant', serif",
+    fontSize: '40px',
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    textDecoration: 'none',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    padding:'30px'
+  }}
+>
+  Foodie Recipes
+</Link>
       <SearchBar />
 
       <Routes>
