@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -29,5 +30,5 @@ randomRoute.setDb(db);
 app.use(randomRoute.randomRouter);
 
 // start server
-const port = 3000;
-app.listen(port, () => console.log(`Server running on localhost:${port}`));
+const port = process.env.PORT;
+app.listen(port, () => console.log(`Server running on port ${port}`));

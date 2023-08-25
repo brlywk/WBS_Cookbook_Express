@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import useLocalhost from "./useLocalhost";
+import useCookbook from "./hooks/useCookbook";
 import RecipeDetail from "./pages/RecipeDetail";
 import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
@@ -9,7 +9,7 @@ import Homepage from "./pages/Homepage";
 function App() {
   const [foods, setFoods] = useState([]);
   const [hero, setHero] = useState(null);
-  const { getFoods, randomFood } = useLocalhost();
+  const { getFoods, randomFood } = useCookbook();
 
   useEffect(() => {
     getFoods()
@@ -29,24 +29,24 @@ function App() {
 
   return (
     <Router>
-<Link 
-  to="/" 
-  className="home-link" 
-  style={{
-    fontFamily: "'Cormorant', serif",
-    fontSize: '40px',
-    fontWeight: 'bold',
-    fontStyle: 'italic',
-    textDecoration: 'none',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    padding:'30px'
-  }}
->
-  Foodie Recipes
-</Link>
+      <Link
+        to="/"
+        className="home-link"
+        style={{
+          fontFamily: "'Cormorant', serif",
+          fontSize: "40px",
+          fontWeight: "bold",
+          fontStyle: "italic",
+          textDecoration: "none",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          padding: "30px",
+        }}
+      >
+        Foodie Recipes
+      </Link>
       <SearchBar />
 
       <Routes>
